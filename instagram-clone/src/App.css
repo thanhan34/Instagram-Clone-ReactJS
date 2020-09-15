@@ -1,3 +1,16 @@
 * {
   margin: 0;
 }
+
+.app{
+  background-color: #fafafa;
+  
+}
+ .app__headerImage{
+   object-fit: contain;
+   background-color: white;
+    padding: 20px;
+    border-bottom: 1px solid lightgray;
+ }
+
+        
