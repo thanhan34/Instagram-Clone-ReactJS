@@ -9,12 +9,13 @@
   align-items: center;
   padding: 20px;
 }
-.post__image {
+.post_image {
   width: 100% !important;
   object-fit: contain !important;
   border-bottom: 1px solid lightgray;
   border-top: 1px solid lightgray;
 }
+
 .post_text {
   font-weight: normal;
   padding: 20px;
