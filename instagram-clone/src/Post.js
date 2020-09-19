@@ -27,7 +27,7 @@ function Post({postID, user , username, caption, imageUrl}) {
         event.preventDefault();
         db.collection("posts").doc(postID).collection("comments").add({
             text: comment,
-            username: user.displayName
+            username: user.displayName,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         })
         setComment('');
@@ -53,9 +53,8 @@ function Post({postID, user , username, caption, imageUrl}) {
                     </p>
                 ))}
             </div>
-            
-            
-            <form className="post_commentBox">
+            { user && (
+                <form className="post_commentBox">
                 <input
                     className="post__input"
                     type="text"
@@ -73,6 +72,9 @@ function Post({postID, user , username, caption, imageUrl}) {
                         Post
                 </button>
             </form>
+            )}
+            
+            
         </div>
     )
 }
