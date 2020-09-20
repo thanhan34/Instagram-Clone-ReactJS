@@ -6,7 +6,8 @@
     margin-right: auto;
     margin-top: 10px;
     margin-bottom: 10px;
-    position: fixed;
+    justify-content: space-between;
+    max-width: 500px;
     
 }
 .imageupload__progress{

@@ -4,6 +4,9 @@
 
 .app {
   background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .app__header {
