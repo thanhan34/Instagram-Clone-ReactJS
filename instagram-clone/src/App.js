@@ -158,7 +158,6 @@ function App() {
         />
         {user ? (
           <div className="app__loginContainer">
-            <h2>{user.displayName}</h2>
             <Button onClick={() => auth.signOut()}>Logout</Button>
           </div>
 

@@ -20,14 +20,7 @@
   display: flex;
   justify-content: space-between;
 }
-.app__loginContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.app__loginContainer > h2 {
-  font-size: larger;
-}
+
 .app__signup {
   display: flex;
   flex-direction: column;
