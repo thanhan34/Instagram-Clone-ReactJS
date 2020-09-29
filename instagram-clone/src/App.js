@@ -92,7 +92,7 @@ function App() {
   };
   return (
     <div className="app">
-      
+
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           <form className="app__signup">
@@ -157,15 +157,19 @@ function App() {
           alt=""
         />
         {user ? (
-          <Button onClick={() => auth.signOut()}>Logout</Button>
-        ) : (
           <div className="app__loginContainer">
-            <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
-            <Button onClick={() => setOpen(true)}>Sign Up</Button>
+            <h2>{user.displayName}</h2>
+            <Button onClick={() => auth.signOut()}>Logout</Button>
           </div>
-        )}
+
+        ) : (
+            <div className="app__loginContainer">
+              <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
+              <Button onClick={() => setOpen(true)}>Sign Up</Button>
+            </div>
+          )}
       </div>
-       
+
       <div className="app__posts">
         <div className="app__postsLeft">
           {posts.map(({ id, post }) => (
@@ -177,33 +181,35 @@ function App() {
               imageUrl={post.imageUrl}
               user={user}
             />
+
           ))}
         </div>
         <div className="app__postsRight">
+
           <InstagramEmbed
-            url="https://instagr.am/p/Zw9o4/"
+            url="https://www.instagram.com/p/B_zhoKRj7KW/"
             maxWidth={320}
             hideCaption={false}
             containerTagName="div"
             protocol=""
             injectScript
-            onLoading={() => {}}
-            onSuccess={() => {}}
-            onAfterRender={() => {}}
-            onFailure={() => {}}
+            onLoading={() => { }}
+            onSuccess={() => { }}
+            onAfterRender={() => { }}
+            onFailure={() => { }}
           />
         </div>
       </div>
-      
+
       <div className="app__uploadImage">
-          {user?.displayName ? (
-            <ImageUpload username={user.displayName} />
-          ) : (
+        {user?.displayName ? (
+          <ImageUpload username={user.displayName} />
+        ) : (
             <h3>Sorry you need to login to upload</h3>
           )}
-      </div>      
-      
-    </div>
+      </div>
+
+    </div >
   );
 }
 
