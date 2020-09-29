@@ -3,29 +3,30 @@ import './Post.css';
 import Avatar from '@material-ui/core/Avatar';
 import { db } from './firebase';
 import firebase from 'firebase';
-function Post({ postID, user, username, caption, imageUrl }) {
+function Post({ postId, user, username, caption, imageUrl }) {
     const [comments, setComments] = useState([]);
     const [comment, setComment] = useState('');
+
     useEffect(() => {
         let unsubscribe;
-        if (postID) {
+        if (postId) {
             unsubscribe = db
                 .collection("posts")
-                .doc(postID)
+                .doc(postId)
                 .collection("comments")
-                .orderBy("timestamp", "desc")
+                //.orderBy("timestamp", "desc")
                 .onSnapshot((snapshot) => {
                     setComments(snapshot.docs.map((doc) => doc.data()));
-                })
+                });
         }
         return () => {
             unsubscribe();
         };
-    }, [postID]);
+    }, [postId]);
 
     const postComment = (event) => {
         event.preventDefault();
-        db.collection("posts").doc(postID).collection("comments").add({
+        db.collection("posts").doc(postId).collection("comments").add({
             text: comment,
             username: user.displayName,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
@@ -41,21 +42,19 @@ function Post({ postID, user, username, caption, imageUrl }) {
                     src=""
                 />
                 <h3>{username}</h3>
-
-
             </div>
-
             <img className="post_image" src={imageUrl} alt="" />
-
             <h4 className="post_text"><strong>{username}:</strong>{caption}</h4>
-
             <div className="post_comments">
                 {comments.map((comment) => (
                     <p>
                         <strong>{comment.username}</strong> {comment.text}
+
                     </p>
+
                 ))}
             </div>
+            {console.log(comments.username)}
             { user && (
                 <form className="post_commentBox">
                     <input
